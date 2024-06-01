@@ -1,0 +1,29 @@
+version: '3.0'
+
+services:
+
+  mongodb:
+    image: mongo
+    container_name: mongo
+    restart: always
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodb:/data/db
+      - configdb:/data/configdb
+
+  mongoexpress:
+    image: mongo-express
+    container_name: mongoexpress
+    restart: always
+    ports:
+      - 8081:8081
+    depends_on:
+      - mongodb
+
+volumes:
+    mongodb:
+    configdb:
+
+
+# admin:pass for mongoexpress

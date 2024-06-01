@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome to my scraping app</title>
+</head>
+<body>
+    <p>
+        Hi, Welcome, let's start. choose date and submit.
+    </p>
+    <form action="/" method="post">
+        <input type="datetime-local" name="from" value="">
+        <input type="datetime-local" name="to" value="">
+        <button name="btn-scrap" type="submit">Generate</button>
+
+        <img src="data:image/png;base64, {{ dataframe }}">
+    </form>
+</body>
+</html>
