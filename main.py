@@ -1,3 +1,5 @@
+import json
+from bson.json_util import dumps
 import yfinance as yf
 from pymongo import MongoClient
 import pandas as pd
@@ -125,6 +127,12 @@ def index():
 
     return render_template('index.html', dataframe=dataframe_url)
 
+# download collection data to json
+def export_to_json():
+    cursor = db['viz_query_for_stock_data'].find({})
+    with open('viz_query_for_stock_data.json', 'w') as file:
+        json.dump(json.loads(dumps(cursor)), file)
+
 
 
 # Execution
@@ -132,4 +140,5 @@ if __name__ == '__main__':
     # for ticker in tickers:
         # fetch_and_store_data(ticker)
     # prepare_dataframe_collection()
+    # export_to_json()
     app.run(host='0.0.0.0', port=5000, debug=True)
